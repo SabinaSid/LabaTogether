@@ -1,25 +1,23 @@
 {
-  "name": "vetclinic",
+  "name": "todo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SabinaSid/LabaTogether.git"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "pug": "^2.0.4",
-    "sqlite3": "^4.1.1",
-    "body-parser": "^1.19.0"
-  },
-  "author": "MASK",
+  "author": "Shtykhno_M",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SabinaSid/LabaTogether/issues"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "sqlite3": "^4.1.1"
   },
-  "homepage": "https://github.com/SabinaSid/LabaTogether#readme"
+  "engines": {
+    "node":"^12.14.1",
+    "npm": "^6.13.4"
+  }
 }
