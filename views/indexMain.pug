@@ -1,88 +1,74 @@
 extends layoutMain.pug
 
 block title
-    title TODO LIST | Main page
+    title Veterinary Clinic | Main page
 
 block titleHeader
-    h1 TODO LIST
+    h1 Veterinary Clinic
 
 block content
     .container-fluid 
-        if editItem   
-            form(method="POST", action="/update")  
-                input(name = "id", hidden, value=editItem.id)  
-                .form-row.justify-content-center    
-                    .form-group.col-sm-6
-                        label Title
-                        input.form-control(name="title",value=editItem.title, required)
-                .form-row.justify-content-center
-                    .form-group.col-sm-3
-                        label Start date
-                        input.form-control(name="startDate", type="date", value=editItem.startDate, required)
-                    .form-group.col-sm-3
-                        label End date
-                        input.form-control(name="endDate", type="date", value=editItem.endDate, required)
-                .form-row.justify-content-center
-                        label.col-sm-3 Status
-                        select.col-sm-3.form-control(name="status")
-                            each item in statuses   
-                                if item.id == editItem.status.id    
-                                    option(value=item.id, selected) #{item.name}
-                                else
-                                    option(value=item.id) #{item.name}
-                .form-row.justify-content-center.mt-5
-                        input.btn.btn-secondary.form-control.col.sm-6(type="submit", value="Save")
- 
-        else
-            - var dateToday = new Date().toISOString().split('T')[0]
+        - var dateToday = new Date().toISOString().split('T')[0]
             form(method="POST", action="/add")   
                 .form-row.justify-content-center    
                     .form-group.col-sm-6
-                        label Title
-                        input.form-control(name="title", required)
+                        label Time
+                        input.form-control(name="Time", type="time", required)
                 .form-row.justify-content-center
                     .form-group.col-sm-3
-                        label Start date
-                        input.form-control(name="startDate", type="date", value=dateToday, required)
+                        label NameOwner
+                        input.form-control(name="NameOwner", required)
                     .form-group.col-sm-3
-                        label End date
-                        input.form-control(name="endDate", type="date", value=dateToday, required)
+                        label NumberOwner
+                        input.form-control(name="NumberOwner", required)
+                    .form-group.col-sm-3
+                        label NameOwner
+                        input.form-control(name="NameAnimal", required)       
                 .form-row.justify-content-center
-                        label.col-sm-3 Status
-                        select.col-sm-3.form-control(name="status")
-                            each item in statuses   
-                                option(value=item.id) #{item.name}
+                        label.col-sm-3 TypeAnimal
+                        select.col-sm-3.form-control(name="TypeAnimal")
+                            each item in TypeAnimals   
+                                option(value=item.id) #{item.Name}
+                 .form-row.justify-content-center
+                        label.col-sm-3 Service
+                        select.col-sm-3.form-control(name="Service")
+                            each item in Services   
+                                option(value=item.id) #{item.Name}
+                        label.col-sm-3 Price : #{item.Price} 
                 .form-row.justify-content-center.mt-5
                         input.btn.btn-secondary.form-control.col.sm-6(type="submit", value="Add")
 
+        div
+            a.btn.btn-secondary.btn-lg(href="/add/"+item.id) &#10133;            
+            a.btn.btn-secondary.btn-lg(href="/edit/"+item.id) &#10000;
+            a.btn.btn-secondary.btn-lg(href="/delete/"+item.id) &#128465;
+            a.btn.btn-secondary.btn-lg(href="/find/"+item.id) &#128270;;
         div
             table.table.table-hover.table-theme-dark.mt-5
                 thead
                     tr
                         th #
-                        th Title
-                        th Start date
-                        th End date
-                        th Status
+                        th Time
+                        th NameOwner
+                        th NumberOwner
+                        th NameAnimal
+                        th TypeAnimal
+                        th Service
+                        th Price
                         th Actions
                 tbody
-                    - var className = ''
-
-                    each item in tasks
-                        if item.status.id == 2
-                            - className = 'task-no-success'
-                        else if item.status.id == 3
-                            - className = 'task-success'
-                        else
-                            - className = ''
-
-                        tr(class=className)
+                        tr
                             td
+                            td #{item.Time}
                             td.name.box
-                                span #{item.title}
-                            td #{item.startDate}
-                            td #{item.endDate}
-                            td #{item.status.name}
+                                span #{item.NameOwner}
+                            td.name.box
+                                span #{item.NumberOwner}
+                            td.name.box
+                                span #{item.NameAnimal}
+                            td #{item.TypeAnimal}
+                            td #{item.Service}
+                            td #{item.Price}
                             td
                                 div
                                     a.btn.btn-secondary.btn-lg(href="/get/"+item.id) &#9998;
