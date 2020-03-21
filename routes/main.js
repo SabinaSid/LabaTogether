@@ -2,10 +2,13 @@ const {MainViewModel} = require( '../models');
 const db = require( '../utils/sqlitedb');
 
 module.exports = (r, q) => {
-    db.getTasks().then(task =>{
-        db.getStatuses().then (statuses => {
-            let model = new MainViewModel('TODO LIST',task, statuses);
-            q.render('indexMain', model);
+    db.getRecords().then(record =>{
+        db.getService().then (service => {
+            db.getTypeAnimal().then(typeAnimal=>{
+                let model = new MainViewModel('Veterinary clinic',record, service,typeAnimal);
+                q.render('indexMain', model);
+            })
+            
         });
     });
 }

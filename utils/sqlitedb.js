@@ -90,7 +90,7 @@ exports.getRecords = function (id) {
 exports.addRecord = function (record) {
     return new Promise((resolve, reject) => {
         if (!task) {
-            reject({ message: 'task is empty' });
+            reject({ message: 'record is empty' });
             return;
         }
         let dateNow = new Date().toISOString().split('T')[0];
@@ -111,7 +111,7 @@ exports.addRecord = function (record) {
     });
 }
 
-exports.updateTask = function (record) {
+exports.updateRecord = function (record) {
     return new Promise((resolve, reject) => {
         if (!record.id) {
             reject({ message: 'record is empty' });
@@ -145,7 +145,7 @@ exports.updateTask = function (record) {
     });
 }
 
-exports.removeTask = function (id) {
+exports.removeRecord = function (id) {
     return new Promise((resolve, reject) => {
         if (!id) {
             reject({ message: 'id is empty' });
@@ -162,7 +162,7 @@ exports.removeTask = function (id) {
     });
 }
 
-exports.getLastTask = function () {
+exports.getLastRecord = function () {
     return new Promise((resolve, reject) => {
         let context = connection();
         let query = `SELECT * FROM Record ORDER BY id DESC LIMIT 1`;

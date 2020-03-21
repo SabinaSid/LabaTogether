@@ -1,31 +1,46 @@
-class Status{
+class TypeAnimal{
     static count = 1;
     constructor(name){
-        this.id = Status.count++;
-        this.name = name;
+        this.id = TypeAnimal.count++;
+        this.Name = name;
     }
 }
-exports.Status = Status;
 
-class Task{
+exports.TypeAnimal = TypeAnimal;
+
+class Service{
     static count = 1;
-    constructor(title, start, end, status){
+    constructor(name,price){
+        this.id = Service.count++;
+        this.Name = name;
+        this.Price=price;
+    }
+}
+exports.Service = Service;
+
+class Record{
+    static count = 1;
+    constructor(date, time, nameOwner, numberOwner,nameAnimal,idTypeAnimal,idService){
         let dateNow = new Date().toISOString().split('T')[0];
 
-        this.title = title || '';
-        this.startDate = start || dateNow;
-        this.endDate = end || dateNow;
-        this.status = status || null;
-        this.id = Task.count++;
+        this.Date = date || dateNow;
+        this.Time = time || '' ;
+        this.NameOwner = nameOwner || '';
+        this.NumberOwner = numberOwner || '';
+        this.NameAnimal = nameAnimal || '';
+        this.IDTypeAnimal = idTypeAnimal || null;
+        this.IDService = idService || null;
+
+        this.id = Record.count++;
     }
 }
-exports.Task = Task;
+exports.Record = Record;
 
 exports.MainViewModel = class {
-    constructor(title, tasks, statuses, editItem){
+    constructor(title, records, services, typeAnimals){
         this.title = title || '';
-        this.tasks = tasks || [];
-        this.statuses = statuses || [];
-        this.editItem = editItem || null;
+        this.records = records || [];
+        this.services = services || [];
+        this.typeAnimals = typeAnimals || [];
     }
 }

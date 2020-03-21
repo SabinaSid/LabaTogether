@@ -1,15 +1,17 @@
 const { MainViewModel } = require('../models');
 let db = require('../utils/sqlitedb');
 
-
+//сделано
 exports.get = (r, q) => {
-    db.getTasks(+r.params.id).then(item => {
+    db.getRecords(+r.params.id).then(item => {
         if(item) {
             console.log(item);
-            db.getTasks().then(tasks => {
-                db.getStatuses().then(statuses => {
-                    let model = new MainViewModel("TODO LIST" , tasks, statuses, item);
-                    q.render('index', model);
+            db.getRecords().then(record => {
+                db.getService().then(service => {
+                    db.getTypeAnimal().then(typeAnimal=>{
+                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal);
+                        q.render('indexMain', model);  
+                    });  
                 });
             });
         } else {
@@ -18,27 +20,36 @@ exports.get = (r, q) => {
     });
 }
 
+//сделано
 exports.add = (r, q) => {
-    db.getStatuses(+r.body.status).then(status=>{
-        r.body.status = status;
-        db.addTask(r.body).then(x=>{
-            q.redirect('/');
-        });
+    db.getTypeAnimal(+r.body.typeAnimal).then(typeAnimal=>{
+        r.body.IDTypeAnimal = typeAnimal.id;
+            db.getService(+r.body.service).then(service=>{
+                r.body.IDService=service.id;
+                db.addTask(r.body).then(x=>{
+                    q.redirect('/');
+                });
+            });       
     });
 }
-
+//сделано
 exports.update = (r, q) => {
     r.body.id = +r.body.id;
-    db.getStatuses(+r.body.status).then(x => {
-        r.body.status = x;
-        db.updateTask(r.body).then(y => {
-            q.redirect('/');
-        });
+    db.getTypeAnimal(+r.body.typeAnimal).then(typeAnimal => {
+        r.body.IDTypeAnimal = typeAnimal.id;
+        db.getService(+r.body.service).then(service=>{
+           r.body.IDService=service.id;
+            db.updateRecord(r.body).then(y => {
+                q.redirect('/');
+            });
+        });       
     });
 };
 
+
+//сделано
 exports.delete = (r, q) => {
-    db.removeTask(+r.params.id).then(x=>{
+    db.removeRecord(+r.params.id).then(x=>{
         q.redirect('/');
     });
 };
