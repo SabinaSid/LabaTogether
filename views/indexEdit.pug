@@ -1,0 +1,42 @@
+extends layoutMain.pug
+block title
+    title Vet Clinic | Main page
+
+block titleHeader
+    h1 Vet Clinic
+
+block content
+    .container-fluid 
+            .form-row.justify-content-center                       
+                .form-group.col-sm-4
+                    label Дата
+                    input.form-control
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Время
+                    input.form-control
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label ФИО
+                    input.form-control
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Номер телефона
+                    input.form-control
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Тип животного
+                    select.dropdown-item
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Кличка
+                    input.form-control
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Услуга
+                    input.form-control
+                .form-group.col-sm-4
+                    label Цена
+                    input.form-control
+            .form-row.justify-content-center 
+                .btn.btn-secondary.btn-lg Добавить запись
