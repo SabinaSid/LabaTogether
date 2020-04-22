@@ -7,7 +7,8 @@ block titleHeader
     h1 Vet Clinic
 
 block content
-    .container-fluid 
+
+    .container-fluid            
             - var dateToday = new Date().toISOString().split('T')[0]
             .form-row.justify-content-center                       
                 .form-group.col-sm-4
@@ -24,7 +25,7 @@ block content
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Номер телефона
-                    input.form-control(name = "Number",class = "phone", placeholder = "+7 (999) 999-99-99", require)
+                    input.form-control(name = "Number",id = "phone", placeholder = "+7 (999) 999-99-99", require)
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Тип животного 
