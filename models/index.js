@@ -1,7 +1,7 @@
 class TypeAnimal{
-    static count = 1;
-    constructor(name){
-        this.id = TypeAnimal.count++;
+    
+    constructor(id,name){
+        this.id = id;
         this.Name = name;
     }
 }
@@ -9,9 +9,9 @@ class TypeAnimal{
 exports.TypeAnimal = TypeAnimal;
 
 class Service{
-    static count = 1;
-    constructor(name,price){
-        this.id = Service.count++;
+   
+    constructor(id,name,price){
+        this.id = id;
         this.Name = name;
         this.Price=price;
     }
@@ -19,8 +19,8 @@ class Service{
 exports.Service = Service;
 
 class Record{
-    static count = 1;
-    constructor(date, time, nameOwner, numberOwner,nameAnimal,idTypeAnimal,idService){
+    
+    constructor(id,date, time, nameOwner, numberOwner,nameAnimal,idTypeAnimal,idService){
         let dateNow = new Date().toISOString().split('T')[0];
 
         this.Date = date || dateNow;
@@ -31,7 +31,7 @@ class Record{
         this.IDTypeAnimal = idTypeAnimal || null;
         this.IDService = idService || null;
 
-        this.id = Record.count++;
+        this.id = id;
     }
 }
 exports.Record = Record;
