@@ -7,81 +7,38 @@ block titleHeader
     h1 Veterinary Clinic
 
 block content
-    .container-fluid 
-        - var dateToday = new Date().toISOString().split('T')[0]
-            form(method="POST", action="/add")   
-                .form-row.justify-content-center    
-                    .form-group.col-sm-6
-                        label Time
-                        input.form-control(name="Time",value=editItem.Time, required)
-                .form-row.justify-content-center
-                    .form-group.col-sm-3
-                        label NameOwner
-                        input.form-control(name="NameOwner",value=editItem.NameOwner, required)
-                    .form-group.col-sm-3
-                        label NumberOwner
-                        input.form-control(name="NumberOwner",value=editItem.NumberOwner, required)
-                    .form-group.col-sm-3
-                        label NameAnimal
-                        input.form-control(name="NameAnimal", value=editItem.NameAnimal, required)       
-                .form-row.justify-content-center
-                        label.col-sm-3 TypeAnimal
-                        select.col-sm-3.form-control(name="TypeAnimal")
-                            each item in typeAnimals 
-                                if item.id==editItem.IDTypeAnimal  
-                                    option(value=item.id, selected) #{item.Name}
-                                else
-                                     option(value=item.id) #{item.Name}
-                .form-row.justify-content-center
-                        label.col-sm-3 Service
-                        select.col-sm-3.form-control(name="Service")
-                            each item in services 
-                                if item.id==editItem.IDService  
-                                    option(value=item.id, selected) #{item.Name}
-                                else
-                                     option(value=item.id) #{item.Name}
-                        label.col-sm-3 Price 
-                        select.col-sm-3.form-control(name="Service")
-                            each item in services 
-                                if item.id==editItem.IDService  
-                                    option(value=item.id, selected) #{item.Price}
-                                else
-                                     option(value=item.id) #{item.Price}
-                .form-row.justify-content-center.mt-5
-                        input.btn.btn-secondary.form-control.col.sm-6(type="submit", value="Add")
-
-        div
-            a.btn.btn-secondary.btn-lg(href="/add/") &#10133;            
-            a.btn.btn-secondary.btn-lg(href="/edit/") &#10000;
-            a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
-            a.btn.btn-secondary.btn-lg(href="/find/") &#128270;;
-        div
-            table.table.table-hover.table-theme-dark.mt-5
-                thead
+    div
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;            
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10000;
+        a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;            
+        a.btn.btn-secondary.btn-lg(href="/find/") &#128270;
+    div
+        table.table.table-hover.table-theme-dark.mt-5
+            thead
+                tr
+                    th #
+                    th Time
+                    th NameOwner
+                    th NumberOwner
+                    th NameAnimal
+                    th TypeAnimal
+                    th Service
+                    th Price
+                    th Actions
+            tbody
                     tr
-                        th #
-                        th Time
-                        th NameOwner
-                        th NumberOwner
-                        th NameAnimal
-                        th TypeAnimal
-                        th Service
-                        th Price
-                        th Actions
-                tbody
-                        tr
-                            td
-                            td 
-                            td.name.box
-                                span 
-                            td.name.box
-                                span 
-                            td.name.box
-                                span 
-                            td 
-                            td 
-                            td 
-                            td
-                                div
-                                    a.btn.btn-secondary.btn-lg(href="/get/") &#9998;
-                                    a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
+                        td
+                        td 
+                        td.name.box
+                            span 
+                        td.name.box
+                            span 
+                        td.name.box
+                            span 
+                        td 
+                        td 
+                        td 
+                        td
+                            div
+                                a.btn.btn-secondary.btn-lg(href="/get/") &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
