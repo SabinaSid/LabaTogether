@@ -37,10 +37,11 @@ class Record{
 exports.Record = Record;
 
 exports.MainViewModel = class {
-    constructor(title, records, services, typeAnimals){
+    constructor(title, records, services, typeAnimals, editItem){
         this.title = title || '';
         this.records = records || [];
         this.services = services || [];
         this.typeAnimals = typeAnimals || [];
+        this.editItem=editItem || null;
     }
 }

@@ -1,7 +1,5 @@
 extends layoutMain.pug
 
-extends layoutMain.pug
-
 block title
     title Veterinary Clinic | Main page
 
@@ -15,28 +13,40 @@ block content
                 .form-row.justify-content-center    
                     .form-group.col-sm-6
                         label Time
-                        input.form-control(name="Time", type="time", required)
+                        input.form-control(name="Time",value=editItem.Time, required)
                 .form-row.justify-content-center
                     .form-group.col-sm-3
                         label NameOwner
-                        input.form-control(name="NameOwner", required)
+                        input.form-control(name="NameOwner",value=editItem.NameOwner, required)
                     .form-group.col-sm-3
                         label NumberOwner
-                        input.form-control(name="NumberOwner", required)
+                        input.form-control(name="NumberOwner",value=editItem.NumberOwner, required)
                     .form-group.col-sm-3
-                        label NameOwner
-                        input.form-control(name="NameAnimal", required)       
+                        label NameAnimal
+                        input.form-control(name="NameAnimal", value=editItem.NameAnimal, required)       
                 .form-row.justify-content-center
                         label.col-sm-3 TypeAnimal
                         select.col-sm-3.form-control(name="TypeAnimal")
-                            each item in TypeAnimals   
-                                option(value=item.id) 
-                 .form-row.justify-content-center
+                            each item in typeAnimals 
+                                if item.id==editItem.IDTypeAnimal  
+                                    option(value=item.id, selected) #{item.Name}
+                                else
+                                     option(value=item.id) #{item.Name}
+                .form-row.justify-content-center
                         label.col-sm-3 Service
                         select.col-sm-3.form-control(name="Service")
-                            each item in Services   
-                                option(value=item.id) 
-                        label.col-sm-3 Price : 
+                            each item in services 
+                                if item.id==editItem.IDService  
+                                    option(value=item.id, selected) #{item.Name}
+                                else
+                                     option(value=item.id) #{item.Name}
+                        label.col-sm-3 Price 
+                        select.col-sm-3.form-control(name="Service")
+                            each item in services 
+                                if item.id==editItem.IDService  
+                                    option(value=item.id, selected) #{item.Price}
+                                else
+                                     option(value=item.id) #{item.Price}
                 .form-row.justify-content-center.mt-5
                         input.btn.btn-secondary.form-control.col.sm-6(type="submit", value="Add")
 
