@@ -59,9 +59,9 @@ exports.getRecords = function (id) {
         r.NameOwner,
         r.NumberOwner,
         r.NameAnimal,
-        t.Name,
-        s.Name,
-        s.Price
+        t.Name [TypeAnimal],
+        s.Name [ServiceName],
+        s.Price 
         FROM Record r 
         join Service s on r.IDService=s.ID
         join TypeAnimal t on r.IDTypeAnimal=t.ID`;

@@ -5,15 +5,13 @@ module.exports = (r, q) => {
     db.getRecords().then(item => {
         if(item) {
             console.log(item);
-            db.getRecords().then(record => {
-                db.getService().then(service => {
-                    db.getTypeAnimal().then(typeAnimal=>{
-                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, item);
-                        console.log('item: ', item);
-                        q.render('indexMain', model);  
+            db.getRecords().then(records => {
+                        let model = records.map(element => {
+                        return new MainViewModel("Veterinaty Clinic" , element, null, null, item);             
+                        });
+                        console.log('item: ', model);
+                        q.render('indexMain', {records:model});  
                     });  
-                });
-            });
         } else {
             q.redirect('/');
         }
