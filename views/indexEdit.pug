@@ -10,6 +10,7 @@ block content
 
     .container-fluid            
         - var dateToday = new Date().toISOString().split('T')[0]
+        form(action="/add", method="post")
             .form-row.justify-content-center                       
                 .form-group.col-sm-4
                     label Дата
@@ -30,8 +31,11 @@ block content
                 .form-group.col-sm-4
                     label Тип животного 
                     select.form-control(name = "Type Animal")
-                        each item in typeAnimals    
-                            option(value = typeAnimals.ID) #{typeAnimals.Name} 
+                        each item in typeAnimals 
+                            if item.id==typeAnimals.id
+                                option(value=item.id, selected) #{item.Name}
+                            else
+                                option(item.id) #{item.Name}
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Кличка
@@ -40,8 +44,11 @@ block content
                 .form-group.col-sm-4
                     label Услуга
                     select.form-control(name = "Service")
-                        each item in services   
-                            option(value = services.ID) #{services.Name} 
+                        each item in services 
+                            if item.id==services .id
+                                option(value=item.id, selected) #{item.Name}
+                            else
+                                option(item.id) #{item.Name}
                 .form-group.col-sm-4
                     label Цена
                     input.form-control
