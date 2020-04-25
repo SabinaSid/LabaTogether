@@ -9,7 +9,7 @@ block titleHeader
 block content
 
     .container-fluid            
-            - var dateToday = new Date().toISOString().split('T')[0]
+        - var dateToday = new Date().toISOString().split('T')[0]
             .form-row.justify-content-center                       
                 .form-group.col-sm-4
                     label Дата
@@ -30,6 +30,8 @@ block content
                 .form-group.col-sm-4
                     label Тип животного 
                     select.form-control(name = "Type Animal")
+                        each item in typeAnimals    
+                            option(value = typeAnimals.ID) #{typeAnimals.Name} 
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Кличка
@@ -38,8 +40,10 @@ block content
                 .form-group.col-sm-4
                     label Услуга
                     select.form-control(name = "Service")
+                        each item in services   
+                            option(value = services.ID) #{services.Name} 
                 .form-group.col-sm-4
                     label Цена
                     input.form-control
-            .form-row.justify-content-center 
+            .form-row.justify-content-center
                 .btn.btn-secondary.btn-lg Добавить запись                                  
