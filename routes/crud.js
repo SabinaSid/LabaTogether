@@ -54,3 +54,9 @@ exports.delete = (r, q) => {
         q.redirect('/');
     });
 };
+
+exports.getServises = (r, q) => {
+    db.getService(+r.params.id).then(item => {
+        q.json(item);
+    });
+}
