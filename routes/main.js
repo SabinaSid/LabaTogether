@@ -9,7 +9,7 @@ module.exports = (r, q) => {
                         let model = records.map(element => {
                         return new MainViewModel("Veterinaty Clinic" , element, null, null, item);             
                         });
-                        //console.log('item: ', model);
+                        console.log("item: ", item);
                         q.render('indexMain', {records:model});  
                     });  
         } else {

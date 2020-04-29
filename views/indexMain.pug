@@ -7,9 +7,10 @@ block titleHeader
     h1 Veterinary Clinic
 
 block content
-    div
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;                    
-        a.btn.btn-secondary.btn-lg(href="/find/") &#128270;
+    div  
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;
+        - var dateToday = new Date().toISOString().split('T')[0]                    
+        input.form-control(name = "Date", type = "date", value = dateToday )
     div
         table.table.table-hover.table-theme-dark.mt-5
             thead
@@ -43,5 +44,10 @@ block content
 
                         td 
                             div
+<<<<<<< HEAD
                                 a.btn.btn-secondary.btn-lg(href="/edit/" + records.ID) &#9998;
                                 a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
+=======
+                                a.btn.btn-secondary.btn-lg(href="/edit/" + item.ID) &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/delete/" + item.ID) &#128465;
+>>>>>>> Maria
