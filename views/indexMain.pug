@@ -8,9 +8,7 @@ block titleHeader
 
 block content
     div
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;            
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10000;
-        a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;            
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;                        
         a.btn.btn-secondary.btn-lg(href="/find/") &#128270;
     div
         table.table.table-hover.table-theme-dark.mt-5
@@ -45,5 +43,5 @@ block content
 
                         td 
                             div
-                                a.btn.btn-secondary.btn-lg(href="/edit/") &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/edit/" + records.ID) &#9998;
                                 a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;

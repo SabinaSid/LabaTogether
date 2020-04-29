@@ -9,8 +9,8 @@ exports.get = (r, q) => {
             db.getRecords().then(record => {
                 db.getService().then(service => {
                     db.getTypeAnimal().then(typeAnimal=>{
-                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, item);
-                        console.log('item: ', item);
+                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, itemI);
+                        console.log('item: ', itemI);
                         q.render('indexMain', model);  
                     });  
                 });
@@ -24,10 +24,10 @@ exports.get = (r, q) => {
 //сделано
 exports.add = (r, q) => {
     db.getTypeAnimal(+r.body.typeAnimal).then(typeAnimal=>{
-        r.body.IDTypeAnimal = typeAnimal.id;
+        r.body.IDTypeAnimal = typeAnimal.ID;
             db.getService(+r.body.service).then(service=>{
-                r.body.IDService=service.id;
-                db.addTask(r.body).then(x=>{
+                r.body.IDService=service.ID;
+                db.addRecord(r.body).then(x=>{
                     q.redirect('/');
                 });
             });       
@@ -55,6 +55,7 @@ exports.delete = (r, q) => {
     });
 };
 
+//
 exports.getServises = (r, q) => {
     db.getService(+r.params.id).then(item => {
         q.json(item);
