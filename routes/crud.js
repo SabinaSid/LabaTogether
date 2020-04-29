@@ -23,10 +23,10 @@ exports.get = (r, q) => {
 
 //сделано
 exports.add = (r, q) => {
-    db.getTypeAnimal(+r.body.typeAnimal).then(typeAnimal=>{
-        r.body.IDTypeAnimal = typeAnimal.id;
-            db.getService(+r.body.service).then(service=>{
-                r.body.IDService=service.id;
+    db.getTypeAnimal(+r.body.IDTypeAnimal).then(TypeAnimal=>{
+        r.body.IDTypeAnimal = TypeAnimal.ID;
+            db.getService(+r.body.IDService).then(Service=>{
+                r.body.IDService=Service.ID;
                 db.addRecord(r.body).then(x=>{
                     q.redirect('/');
                 });
@@ -36,10 +36,10 @@ exports.add = (r, q) => {
 //сделано
 exports.update = (r, q) => {
     r.body.id = +r.body.id;
-    db.getTypeAnimal(+r.body.typeAnimal).then(typeAnimal => {
-        r.body.IDTypeAnimal = typeAnimal.id;
-        db.getService(+r.body.service).then(service=>{
-           r.body.IDService=service.id;
+    db.getTypeAnimal(+r.body.IDTypeAnimal).then(TypeAnimal => {
+        r.body.IDTypeAnimal = TypeAnimal.ID;
+        db.getService(+r.body.IDService).then(Service=>{
+           r.body.IDService=Service.ID;
             db.updateRecord(r.body).then(y => {
                 q.redirect('/');
             });

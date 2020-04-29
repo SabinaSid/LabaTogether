@@ -87,12 +87,13 @@ exports.getRecords = function (id) {
     });
 }
 
-exports.addRecord = function (record) {
+exports.addRecord = function (record) {   
     return new Promise((resolve, reject) => {
         if (!record) {
             reject({ message: 'record is empty' });
             return;
         }
+        console.log("запись:", record);
         let dateNow = new Date().toISOString().split('T')[0];
         let query = 'INSERT INTO Record (Date, Time, NameOwner, NumberOwner,NameAnimal,IDTypeAnimal,IDService) VALUES(?,?,?,?,?,?,?)';
         let params = [
