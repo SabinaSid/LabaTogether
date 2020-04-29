@@ -7,92 +7,47 @@ block titleHeader
     h1 Vet Clinic
 
 block content
-    .container-fluid
-        if records 
-            form(action="/update", method="POST")           
-            input(name = "ID", hidden, value=records.ID)
-                .form-row.justify-content-center                       
-                    .form-group.col-sm-4
-                        label Дата
-                        input.form-control(name = "Date", type = "date", value = records.Date, required )
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Время
-                        input.form-control(name = "Time", type = "time", value = records.Time, required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label ФИО
-                        input.form-control(name = "NameOwner", type = "text", placeholder = "Иванов Иван Иванович", value = records.NameOwner, required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Номер телефона
-                        input.form-control(name = "NumberOwner",id = "phone", placeholder = "8 999 999-99-99", value = records.NumberOwner, required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Тип животного 
-                        select.form-control(name = "IDTypeAnimal")
-                            each item in typeAnimals
-                                if item.ID == records.typeAnimal.ID 
-                                    option(value = item.ID, selected) #{item.Name}
-                                else
-                                    option(value = item.ID) #{item.Name}
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Кличка
-                        input.form-control(name = "NameAnimal", type="text", value = records.NameAnimal, required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Услуга
-                        select.form-control(name = "IDService", id="selectService") 
-                            each item in services  
-                                if  item.ID == records.IDService.ID 
-                                    option(value=item.ID, selected) #{item.Name}  
-                                else  
-                                    option(value=item.ID) #{item.Name}                           
-                    .form-group.col-sm-4
-                        label Цена
-                        input.form-control(name = "Price", type = "text",id="inputService")
-                .form-row.justify-content-center
-                        a.btn.btn-secondary.btn-lg(href="/") Редактировать
-        else
-            form(action="/add", method="POST")           
-            - var dateToday = new Date().toISOString().split('T')[0]
-                .form-row.justify-content-center                       
-                    .form-group.col-sm-4
-                        label Дата
-                        input.form-control(name = "Date", type = "date", value = dateToday )
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Время
-                        input.form-control(name = "Time", type = "time", required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label ФИО
-                        input.form-control(name = "NameOwner", type = "text", placeholder = "Иванов Иван Иванович", required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Номер телефона
-                        input.form-control(name = "NumberOwner",id = "phone", placeholder = "+7 (999) 999-99-99", required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Тип животного 
-                        select.form-control(name = "IDTypeAnimal")
-                            each item in typeAnimals 
-                                    option(value = item.ID) #{item.Name}
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Кличка
-                        input.form-control(name = "NameAnimal", type="text", required)
-                .form-row.justify-content-center   
-                    .form-group.col-sm-4
-                        label Услуга
-                        select.form-control(name = "IDService", id="selectService") 
-                            each item in services    
-                                option(value=item.ID) #{item.Name}                             
-                    .form-group.col-sm-4
-                        label Цена
-                        input.form-control(name = "Price", type = "text",id="inputService")
-                .form-row.justify-content-center
-                        a.btn.btn-secondary.btn-lg(href="/") Добавить                              
+
+    .container-fluid            
+        - var dateToday = new Date().toISOString().split('T')[0]
+        form(method="POST", action="/add" )
+            .form-row.justify-content-center                       
+                .form-group.col-sm-4
+                    label Дата
+                    input.form-control(name = "Date", type = "date", value = dateToday )
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Время
+                    input.form-control(name = "Time", type = "time", require)
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label ФИО
+                    input.form-control(name = "NameOwner", type = "text", placeholder = "Иванов Иван Иванович", require)
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Номер телефона
+                    input.form-control(name = "NumberOwner",id = "phone", placeholder = "+7 (999) 999-99-99", require)
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Тип животного 
+                    select.form-control(name = "NameAnimal")
+                        each item in typeAnimals 
+                                option(value = item.ID) #{item.Name}
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Кличка
+                    input.form-control(name = "IDTypeAnimal")
+            .form-row.justify-content-center   
+                .form-group.col-sm-4
+                    label Услуга
+                    select.form-control(name = "IDService", id="selectService") 
+                        each item in services    
+                            option(value=item.ID) #{item.Name}                             
+                .form-group.col-sm-4
+                    label Цена
+                    input.form-control(name = "Price", type = "text",id="inputService")
+
+            .form-row.justify-content-center
+                input.btn.btn-secondary.form-control.col-sm-6(type="submit", value="Add")                              
 
     
