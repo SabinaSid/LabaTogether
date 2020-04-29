@@ -8,9 +8,7 @@ block titleHeader
 
 block content
     div
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;            
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10000;
-        a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;            
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;                    
         a.btn.btn-secondary.btn-lg(href="/find/") &#128270;
     div
         table.table.table-hover.table-theme-dark.mt-5
@@ -26,19 +24,24 @@ block content
                     th Price
                     th Actions
             tbody
+                each item in records
                     tr
                         td
+                        td #{item.records.Time}
+                           
+                        td #{item.records.NameOwner}
+                           
+                        td #{item.records.NumberOwner}
+                            
+                        td #{item.records.NameAnimal}
+
+                        td #{item.records.TypeAnimal}
+                        
+                        td #{item.records.ServiceName}
+
+                        td #{item.records.Price}
+
                         td 
-                        td.name.box
-                            span 
-                        td.name.box
-                            span 
-                        td.name.box
-                            span 
-                        td 
-                        td 
-                        td 
-                        td
                             div
-                                a.btn.btn-secondary.btn-lg(href="/get/") &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/edit/" + records.ID) &#9998;
                                 a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;

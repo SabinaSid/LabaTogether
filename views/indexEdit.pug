@@ -9,7 +9,8 @@ block titleHeader
 block content
 
     .container-fluid            
-            - var dateToday = new Date().toISOString().split('T')[0]
+        - var dateToday = new Date().toISOString().split('T')[0]
+        form(method="POST", action="/add" )
             .form-row.justify-content-center                       
                 .form-group.col-sm-4
                     label Дата
@@ -21,25 +22,40 @@ block content
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label ФИО
-                    input.form-control(name = "FIO", type = "text", placeholder = "Иванов Иван Иванович", require)
+                    input.form-control(name = "NameOwner", type = "text", placeholder = "Иванов Иван Иванович", require)
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Номер телефона
-                    input.form-control(name = "Number",id = "phone", placeholder = "+7 (999) 999-99-99", require)
+                    input.form-control(name = "NumberOwner",id = "phone", placeholder = "+7 (999) 999-99-99", require)
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Тип животного 
-                    select.form-control(name = "Type Animal")
+<<<<<<< HEAD
+                    select.form-control(name = "NameAnimal")
+=======
+                    select.form-control(name = "IDTypeAnimal")
+>>>>>>> Maria
+                        each item in typeAnimals 
+                                option(value = item.ID, selected) #{item.Name}
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Кличка
-                    input.form-control(name = "Name Animal")
+<<<<<<< HEAD
+                    input.form-control(name = "IDTypeAnimal")
+=======
+                    input.form-control(name = "NameAnimal")
+>>>>>>> Maria
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Услуга
-                    select.form-control(name = "Service")
+                    select.form-control(name = "IDService", id="selectService") 
+                        each item in services    
+                            option(value=item.ID) #{item.Name}                             
                 .form-group.col-sm-4
                     label Цена
-                    input.form-control
-            .form-row.justify-content-center 
-                .btn.btn-secondary.btn-lg Добавить запись                                  
+                    input.form-control(name = "Price", type = "text",id="inputService")
+
+            .form-row.justify-content-center
+                input.btn.btn-secondary.form-control.col-sm-6(type="submit", value="Add")                              
+
+    

@@ -59,9 +59,9 @@ exports.getRecords = function (id) {
         r.NameOwner,
         r.NumberOwner,
         r.NameAnimal,
-        t.Name,
-        s.Name,
-        s.Price
+        t.Name [TypeAnimal],
+        s.Name [ServiceName],
+        s.Price 
         FROM Record r 
         join Service s on r.IDService=s.ID
         join TypeAnimal t on r.IDTypeAnimal=t.ID`;
@@ -87,12 +87,13 @@ exports.getRecords = function (id) {
     });
 }
 
-exports.addRecord = function (record) {
+exports.addRecord = function (record) {   
     return new Promise((resolve, reject) => {
-        if (!task) {
+        if (!record) {
             reject({ message: 'record is empty' });
             return;
         }
+        console.log("запись:", record);
         let dateNow = new Date().toISOString().split('T')[0];
         let query = 'INSERT INTO Record (Date, Time, NameOwner, NumberOwner,NameAnimal,IDTypeAnimal,IDService) VALUES(?,?,?,?,?,?,?)';
         let params = [
