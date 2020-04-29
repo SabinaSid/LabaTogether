@@ -22,25 +22,25 @@ block content
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label ФИО
-                    input.form-control(name = "FIO", type = "text", placeholder = "Иванов Иван Иванович", require)
+                    input.form-control(name = "NameOwner", type = "text", placeholder = "Иванов Иван Иванович", require)
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Номер телефона
-                    input.form-control(name = "Number",id = "phone", placeholder = "+7 (999) 999-99-99", require)
+                    input.form-control(name = "NumberOwner",id = "phone", placeholder = "+7 (999) 999-99-99", require)
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Тип животного 
-                    select.form-control(name = "Type Animal")
+                    select.form-control(name = "IDTypeAnimal")
                         each item in typeAnimals 
-                                option(value = item.ID) #{item.Name}
+                                option(value = item.ID, selected) #{item.Name}
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Кличка
-                    input.form-control(name = "Name Animal")
+                    input.form-control(name = "NameAnimal")
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Услуга
-                    select.form-control(name = "Service", id="selectService") 
+                    select.form-control(name = "IDService", id="selectService") 
                         each item in services    
                             option(value=item.ID) #{item.Name}                             
                 .form-group.col-sm-4
