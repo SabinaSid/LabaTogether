@@ -27,7 +27,7 @@ exports.add = (r, q) => {
         r.body.IDTypeAnimal = typeAnimal.id;
             db.getService(+r.body.service).then(service=>{
                 r.body.IDService=service.id;
-                db.addTask(r.body).then(x=>{
+                db.addRecord(r.body).then(x=>{
                     q.redirect('/');
                 });
             });       

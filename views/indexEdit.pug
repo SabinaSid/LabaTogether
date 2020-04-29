@@ -10,8 +10,7 @@ block content
 
     .container-fluid            
         - var dateToday = new Date().toISOString().split('T')[0]
-        - var pr
-        form(action="/add", method="post")
+        form(method="POST", action="/add" )
             .form-row.justify-content-center                       
                 .form-group.col-sm-4
                     label Дата
@@ -41,7 +40,7 @@ block content
             .form-row.justify-content-center   
                 .form-group.col-sm-4
                     label Услуга
-                    select.form-control(name = "Service", id="selectService", onchange = "changeFunc()") 
+                    select.form-control(name = "Service", id="selectService") 
                         each item in services    
                             option(value=item.ID) #{item.Name}                             
                 .form-group.col-sm-4
@@ -49,6 +48,6 @@ block content
                     input.form-control(name = "Price", type = "text",id="inputService")
 
             .form-row.justify-content-center
-                .btn.btn-secondary.btn-lg Добавить запись                               
+                input.btn.btn-secondary.form-control.col-sm-6(type="submit", value="Add")                              
 
     

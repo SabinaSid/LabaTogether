@@ -89,7 +89,7 @@ exports.getRecords = function (id) {
 
 exports.addRecord = function (record) {
     return new Promise((resolve, reject) => {
-        if (!task) {
+        if (!record) {
             reject({ message: 'record is empty' });
             return;
         }
