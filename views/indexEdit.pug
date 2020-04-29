@@ -8,7 +8,8 @@ block titleHeader
 
 block content
 
-    .container-fluid            
+    .container-fluid     
+           
         - var dateToday = new Date().toISOString().split('T')[0]
         form(method="POST", action="/add" )
             .form-row.justify-content-center                       

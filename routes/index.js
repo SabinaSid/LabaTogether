@@ -5,7 +5,12 @@ const crud = require("./crud");
 
 
 router.get("/", main);
+<<<<<<< HEAD
 router.get("/edit/", edit);
+=======
+router.get("/edit", edit);
+router.get("/edit/:id", edit);
+>>>>>>> Maria
 router.get("/get/:id", crud.get);
 router.post("/add", crud.add);
 router.post("/update", crud.update);
