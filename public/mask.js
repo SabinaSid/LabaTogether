@@ -1,4 +1,3 @@
-
 $("#selectService").change(function () {
         let id = $(this).val();
         $.get(`/getServises/${id}`).then(
