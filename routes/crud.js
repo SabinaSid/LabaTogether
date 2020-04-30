@@ -50,9 +50,9 @@ exports.update = (r, q) => {
 
 //сделано
 exports.delete = (r, q) => {
-    db.removeRecord(+r.params.ID).then(x=>{
+    db.removeRecord(+r.params.id).then(x=>{
         q.redirect('/');
-    });
+    }).catch(x=>console.log("delete : ",x));
 };
 
 exports.getServises = (r, q) => {

@@ -22,7 +22,6 @@ class Record{
     static count = 1;
     constructor(date, time, nameOwner, numberOwner,nameAnimal,idTypeAnimal,idService){
         let dateNow = new Date().toISOString().split('T')[0];
-
         this.Date = date || dateNow;
         this.Time = time || '' ;
         this.NameOwner = nameOwner || '';
