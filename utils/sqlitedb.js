@@ -53,7 +53,7 @@ exports.getRecords = function (id) {
     return new Promise((resolve, reject) => {
         let context = connection();
         let query = `select 
-        r.id,
+        r.id[IDRecord],
         r.Date,
         r.Time,
         r.NameOwner,

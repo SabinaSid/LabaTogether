@@ -17,6 +17,7 @@ block content
             thead
                 tr
                     th #
+                    th Date
                     th Time
                     th NameOwner
                     th NumberOwner
@@ -29,6 +30,7 @@ block content
                 each item in records
                     tr
                         td
+                        td #{item.records.Date}
                         td #{item.records.Time}
                            
                         td #{item.records.NameOwner}
@@ -45,5 +47,6 @@ block content
 
                         td 
                             div
-                                a.btn.btn-secondary.btn-lg(href="/edit/") &#9998;
-                                a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
+                                a.btn.btn-secondary.btn-lg(href="/edit/"+item.records.IDRecord) &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/delete/"+item.records.IDRecord) &#128465;
+                                
