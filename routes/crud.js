@@ -35,7 +35,7 @@ exports.add = (r, q) => {
 }
 //сделано
 exports.update = (r, q) => {
-    r.body.id = +r.body.id;
+    r.body.id = r.params.id;
     db.getTypeAnimal(+r.body.IDTypeAnimal).then(TypeAnimal => {
         r.body.IDTypeAnimal = TypeAnimal.ID;
         db.getService(+r.body.IDService).then(Service=>{
