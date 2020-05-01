@@ -6,6 +6,7 @@ const crud = require("./crud");
 
 router.get("/", main);
 router.get("/edit", edit);
+router.get("/edit/:id", edit);
 router.get("/get/:id", crud.get);
 router.post("/add", crud.add);
 router.post("/update", crud.update);
