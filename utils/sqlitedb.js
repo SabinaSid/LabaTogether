@@ -50,10 +50,12 @@ exports.getService = function (id) {
 }
 
 exports.getRecords = function (id) {
+    console.log(id);
     return new Promise((resolve, reject) => {
         let context = connection();
+        let params = [];
         let query = `select 
-        r.id,
+        r.ID[IDRecord],
         r.Date,
         r.Time,
         r.NameOwner,
@@ -61,17 +63,18 @@ exports.getRecords = function (id) {
         r.NameAnimal,
         t.Name [TypeAnimal],
         s.Name [ServiceName],
-        s.Price 
+        s.Price,
+        r.IDService,
+        r.IDTypeAnimal
         FROM Record r 
         join Service s on r.IDService=s.ID
         join TypeAnimal t on r.IDTypeAnimal=t.ID`;
 
         if (id) {
-            query += ' WHERE ID = ?';
+            query += ' WHERE r.ID = ?';
             params.push(id);
         }
-
-        context.all(query, (err, result) => {
+        context.all(query,params, (err, result) => {
             if (err) 
                 reject(err);
             
@@ -79,8 +82,8 @@ exports.getRecords = function (id) {
                     if (id) {
                         result = result[0];
                     }
-                    resolve(result);
 
+                    resolve(result);
                 };
             
         }).close();
@@ -126,7 +129,7 @@ exports.updateRecord = function (record) {
                                         NumberOwner = ?,
                                         NameAnimal = ?,
                                         IDTypeAnimal =?,
-                                        IDService =?,
+                                        IDService =?
                                       WHERE id = ?`;
         let params = [
             record.Date || dateNow,
@@ -138,7 +141,6 @@ exports.updateRecord = function (record) {
             record.IDService || 1,
             record.id
         ];
-        console.log(params);
         connection().run(query, params, (err, result) => {
             if (err) reject(err);
             else resolve(result);
