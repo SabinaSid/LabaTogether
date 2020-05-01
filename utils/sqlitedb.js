@@ -89,6 +89,39 @@ exports.getRecords = function (id) {
         }).close();
     });
 }
+exports.getRecordsForDate = function (Date) {
+    console.log(Date);
+    let dateNow = new Date().toISOString().split('T')[0];
+    return new Promise((resolve, reject) => {
+        let context = connection();
+        let params = [Date || dateNow];
+        let query = `select 
+        r.ID[IDRecord],
+        r.Date,
+        r.Time,
+        r.NameOwner,
+        r.NumberOwner,
+        r.NameAnimal,
+        t.Name [TypeAnimal],
+        s.Name [ServiceName],
+        s.Price,
+        r.IDService,
+        r.IDTypeAnimal
+        FROM Record r 
+        join Service s on r.IDService=s.ID
+        join TypeAnimal t on r.IDTypeAnimal=t.ID
+        WHERE r.Date = ?`;
+        context.all(query,params, (err, result) => {
+            if (err) 
+                reject(err);
+            
+            else {
+                    resolve(result);
+                };
+            
+        }).close();
+    });
+}
 
 exports.addRecord = function (record) {   
     return new Promise((resolve, reject) => {
