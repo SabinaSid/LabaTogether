@@ -7,14 +7,16 @@ block titleHeader
     h1 Veterinary Clinic
 
 block content
-    div
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;                    
-        a.btn.btn-secondary.btn-lg(href="/find/") &#128270;
+    div  
+        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;
+        - var dateToday = new Date().toISOString().split('T')[0]                    
+        input.form-control(name = "Date", type = "date", value = dateToday, id="dateRecord" )
     div
         table.table.table-hover.table-theme-dark.mt-5
             thead
                 tr
                     th #
+                    th Date
                     th Time
                     th NameOwner
                     th NumberOwner
@@ -27,6 +29,7 @@ block content
                 each item in records
                     tr
                         td
+                        td #{item.records.Date}
                         td #{item.records.Time}
                            
                         td #{item.records.NameOwner}
@@ -43,5 +46,6 @@ block content
 
                         td 
                             div
-                                a.btn.btn-secondary.btn-lg(href="/edit/") &#9998;
-                                a.btn.btn-secondary.btn-lg(href="/delete/") &#128465;
+                                a.btn.btn-secondary.btn-lg(href="/edit/"+item.records.IDRecord) &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/delete/"+item.records.IDRecord) &#128465;
+                                

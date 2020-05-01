@@ -9,8 +9,8 @@ exports.get = (r, q) => {
             db.getRecords().then(record => {
                 db.getService().then(service => {
                     db.getTypeAnimal().then(typeAnimal=>{
-                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, item);
-                        console.log('item: ', item);
+                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, itemI);
+                        console.log('item: ', itemI);
                         q.render('indexMain', model);  
                     });  
                 });
@@ -35,7 +35,7 @@ exports.add = (r, q) => {
 }
 //сделано
 exports.update = (r, q) => {
-    r.body.id = +r.body.id;
+    r.body.id = r.params.id;
     db.getTypeAnimal(+r.body.IDTypeAnimal).then(TypeAnimal => {
         r.body.IDTypeAnimal = TypeAnimal.ID;
         db.getService(+r.body.IDService).then(Service=>{
@@ -55,8 +55,15 @@ exports.delete = (r, q) => {
     });
 };
 
+//
 exports.getServises = (r, q) => {
     db.getService(+r.params.id).then(item => {
+        q.json(item);
+    });
+}
+exports.getRecordByDate= (r, q) => {
+    db.getRecordByDate(r.params.date).then(item => {
+        console.log('CRUD по нужной дате:',item)
         q.json(item);
     });
 }
