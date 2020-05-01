@@ -90,6 +90,47 @@ exports.getRecords = function (id) {
     });
 }
 
+exports.getRecordByDate = function (date) {
+    console.log("дата выбрана:",date);
+    return new Promise((resolve, reject) => {
+        let context = connection();
+        let params = [];
+        let query = `select 
+        r.ID[IDRecord],
+        r.Date,
+        r.Time,
+        r.NameOwner,
+        r.NumberOwner,
+        r.NameAnimal,
+        t.Name [TypeAnimal],
+        s.Name [ServiceName],
+        s.Price,
+        r.IDService,
+        r.IDTypeAnimal
+        FROM Record r 
+        join Service s on r.IDService=s.ID
+        join TypeAnimal t on r.IDTypeAnimal=t.ID`;
+
+        if (date) {
+            query += ' WHERE r.Date = ?';
+            params.push(date);
+        }
+        context.all(query,params, (err, result) => {
+            if (err) 
+                reject(err);
+            
+            else {
+                    /*if (date) {
+                        result = result[0];
+                    }*/
+
+                    resolve(result);
+                };
+            
+        }).close();
+    });
+}
+
 exports.addRecord = function (record) {   
     return new Promise((resolve, reject) => {
         if (!record) {

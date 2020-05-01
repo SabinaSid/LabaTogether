@@ -10,7 +10,7 @@ block content
     div  
         a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;
         - var dateToday = new Date().toISOString().split('T')[0]                    
-        input.form-control(name = "Date", type = "date", value = dateToday )
+        input.form-control(name = "Date", type = "date", value = dateToday, id="dateRecord" )
     div
         table.table.table-hover.table-theme-dark.mt-5
             thead
