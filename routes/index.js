@@ -13,11 +13,7 @@ router.post("/add", crud.add);
 router.post("/update/:id", crud.update);
 router.get("/delete/:id", crud.delete);
 router.get("/getServises/:id", crud.getServises);
-<<<<<<< HEAD
-//router.get("/getRecordByDate/:date", crud.getRecordByDate);
-=======
 router.get("/getRecordByDate/:date", crud.getRecordByDate, main);
->>>>>>> Develop
 
 
 module.exports = router;
