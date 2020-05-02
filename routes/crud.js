@@ -62,13 +62,14 @@ exports.getServises = (r, q) => {
 }
 exports.getRecordByDate= (r, q) => {
     db.getRecordByDate(r.params.date).then(records => {
+        q.status(200);
         console.log('CRUD по нужной дате:',records)
-        let model = records.map(element => {
+        /*let model = records.map(element => {
             console.log('element',element);
             return new MainViewModel("Veterinaty Clinic" , element, null, null, null);             
             });
             console.log('{records:model',{records:model});   
-        q.render('indexMain', {records:model}); 
-      //  q.json(item);
+        q.render('indexMain', {records:model}); */
+       q.json(records);
     });
 }

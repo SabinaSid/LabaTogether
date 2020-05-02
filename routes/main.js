@@ -5,7 +5,8 @@ module.exports = (r, q) => {
     db.getRecords().then(item => {
         if(item) {
             //console.log(item);
-            db.getRecords().then(records => {
+            var d=new Date().toISOString().split('T')[0];
+            db.getRecordByDate(d).then(records => {
                         let model = records.map(element => {
                         return new MainViewModel("Veterinaty Clinic" , element, null, null, item);             
                         });
