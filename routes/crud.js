@@ -5,12 +5,11 @@ let db = require('../utils/sqlitedb');
 exports.get = (r, q) => {
     db.getRecords(+r.params.id).then(item => {
         if(item) {
-            console.log(item);
             db.getRecords().then(record => {
                 db.getService().then(service => {
                     db.getTypeAnimal().then(typeAnimal=>{
-                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, itemI);
-                        console.log('item: ', itemI);
+                        let model = new MainViewModel("Veterinaty Clinic" , record, service, typeAnimal, item);
+                        console.log('item: ', item);
                         q.render('indexMain', model);  
                     });  
                 });
@@ -52,12 +51,24 @@ exports.update = (r, q) => {
 exports.delete = (r, q) => {
     db.removeRecord(+r.params.id).then(x=>{
         q.redirect('/');
-    });
+    }).catch(x=>console.log("delete : ",x));
 };
 
 //
 exports.getServises = (r, q) => {
     db.getService(+r.params.id).then(item => {
         q.json(item);
+    });
+}
+exports.getRecordByDate= (r, q) => {
+    db.getRecordByDate(r.params.date).then(records => {
+        console.log('CRUD по нужной дате:',records)
+        let model = records.map(element => {
+            console.log('element',element);
+            return new MainViewModel("Veterinaty Clinic" , element, null, null, null);             
+            });
+            console.log('{records:model',{records:model});   
+        q.render('indexMain', {records:model}); 
+      //  q.json(item);
     });
 }
