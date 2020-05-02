@@ -8,14 +8,22 @@ $("#selectService").change(function () {
         )
 }).trigger("change")
 
-$("#dateRecord").change(function () {
-        let date = $(this).val();     
-       // console.log('date в mask.js:',date);
-        $.get(`/getRecordByDate/${date}`).then(
-                
-                /*function(data){
-                       console.log('я тут'); 
-                       q.render('indexMain',data); 
-                }*/
-        )
-}).trigger("change")
+
+exports.ExportDate = function(){
+        $("#dateRecord").change(function () {
+                let date_ = $(this).val();
+         
+                module.exports = date_;
+               //  module.exports.dateMask = date; 
+                // console.log('date в mask.js:',date);
+                // $.get(`/getRecordByDate/${date}`).then(
+                         /*function(data){
+                                console.log('я тут'); 
+                                q.render('indexMain',data); 
+                         }*/
+                 //)
+         }).trigger("change")
+}
+
+
+//module.exports = {date_};
