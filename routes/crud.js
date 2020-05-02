@@ -65,7 +65,7 @@ exports.getRecordByDate= (r, q) => {
         console.log('CRUD по нужной дате:',records)
         let model = records.map(element => {
             console.log('element',element);
-            return new MainViewModel("Veterinaty Clinic" , element, null, null, null);             
+            return new MainViewModel("Veterinaty Clinic" , element, null, null, records);             
             });
             console.log('{records:model',{records:model});   
         q.render('indexMain', {records:model}); 
