@@ -6,7 +6,10 @@ tbody{
 tbody tr {
     counter-increment: myCounter;
 }
-
+footer.text-center
+{
+margin-top: 30vh; 
+}
 tbody tr td:first-child::before{
     content: counter(myCounter);
     font-weight:900;
@@ -25,10 +28,55 @@ tbody tr td {
     max-width: 30vw;
 }
 
-.table .task-success{
-    background: #20c997;
-}
+#navbar ul{
+    display: none;
+    background-color: #ffc107;
+    position: absolute;
+    top: 100%;
+  }
+  #navbar li:hover ul { display: block; }
+  #navbar, #navbar ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  #navbar {
+    height: 50px;
+    background-color: #666;
+    padding-left: 25px;
+    min-width: 470px;
+  }
+  #navbar li {
+    float: left;
+    position: relative;
+    height: 100%;
+    font-size: 30px;
+    color: #ffc107;
+  }
+  #navbar li a {
+    display: block;
+    padding: 10px;
+    width: 100px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;    
+    font-size: 20px;
+  }
+  #navbar ul li { float: none; }
+  #navbar li a:hover { background-color: #ffc107f3; }
+  #navbar ul li:hover { background-color: #666; }
 
-.table .task-no-success{
-    background: #ffc107;
+#dateRecord
+{
+    width: 200px;
+}
+.block1{
+    margin-top: 10vh;
+    margin-left: 1vw;
+}
+header.text-center{
+  background-color: #666;
+  color: #ffc107;
+  padding: 10px;
+  margin-bottom: 5px;
 }

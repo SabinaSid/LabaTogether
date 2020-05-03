@@ -1,14 +1,15 @@
 extends layoutMain.pug
 
 block title
-    title Vet Clinic | Main page
+    title Veterinary Clinic | Edit page
 
 block titleHeader
-    h1 Vet Clinic
+    h1 Veterinary Clinic
 
 block content
-
-    .container-fluid     
+    .container-fluid   
+    
+        a.btn.btn-secondary.btn-lg(href="/") &#9668;Назад
         if editItem
             form(method="POST", action="/update/"+ editItem.IDRecord)
                 .form-row.justify-content-center                       
