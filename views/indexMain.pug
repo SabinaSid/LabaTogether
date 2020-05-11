@@ -4,27 +4,35 @@ block title
     title Veterinary Clinic | Main page
 
 block titleHeader
-    h1 Veterinary Clinic
+    <ul id="navbar">    
+      <li>Veterinary Clinic</li>
+      <li><a href="#">Записи</a>
+        <ul>
+          <li><a href="/edit/">Добавить запись</a></li>
+        </ul>
+      </li>
+    </ul>
 
 block content
-    div  
-        a.btn.btn-secondary.btn-lg(href="/edit/") &#10133;
+    <div class="block1">     
+        <h3>Выбор по дате</h3>     
         - var dateToday = new Date().toISOString().split('T')[0]                    
         input.form-control(name = "Date", type = "date", value = dateToday, id="dateRecord" )
+    </div>
     div
         table.table.table-hover.table-theme-dark.mt-5
             thead
                 tr
-                    th #
-                    th Date
-                    th Time
-                    th NameOwner
-                    th NumberOwner
-                    th NameAnimal
-                    th TypeAnimal
-                    th Service
-                    th Price
-                    th Actions
+                    th №
+                    th Дата
+                    th Время
+                    th ФИО хозяина
+                    th Сот.телефон
+                    th Имя животного
+                    th Тип животного
+                    th Услуга
+                    th Цена
+                    th Функции
             tbody
                 each item in records
                     tr
