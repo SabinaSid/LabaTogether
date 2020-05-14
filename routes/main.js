@@ -10,8 +10,6 @@ module.exports = (r, q) => {
                         let model = records.map(element => {
                         return new MainViewModel("Veterinaty Clinic" , element, null, null, item);             
                         });
-                        //console.log("item: ", item);
-                        console.log('{records:modelmainjs',{records:model});
                         q.render('indexMain', {records:model});  
                     });  
         } else {

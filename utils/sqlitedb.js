@@ -137,7 +137,6 @@ exports.addRecord = function (record) {
             reject({ message: 'record is empty' });
             return;
         }
-        console.log("запись:", record);
         let dateNow = new Date().toISOString().split('T')[0];
         let query = 'INSERT INTO Record (Date, Time, NameOwner, NumberOwner,NameAnimal,IDTypeAnimal,IDService) VALUES(?,?,?,?,?,?,?)';
         let params = [
@@ -218,7 +217,27 @@ exports.getLastRecord = function () {
             else {
                 result = result ? result[0] : null;
                 resolve(result);
+                console.log('add record sqllitedb',result);
             }
         }).close();
     });
+}
+exports.addLogger=function(log){
+    return new Promise((resolve,reject)=>{
+        if (!log){
+            reject({message:'log is empty'});
+            return;
+        }
+        let dateNow=new Date().toISOString().split('T')[0];
+        let query=`INSERT INTO Logger ( whatDo, whenDo) VALUES(?,?)`;
+        let params=[
+            log.whatDo || '',
+            log.whenDo || dateNow,
+        ];
+        connection().run(query,params,(err,result)=>{
+            if (err) reject(err);
+            else resolve(result);
+        }).close();
+    });
+
 }

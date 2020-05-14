@@ -9,7 +9,6 @@ $("#selectService").change(function () {
 
 $("#dateRecord").change(function () {
         let date = $(this).val();     
-       // console.log('date в mask.js:',date);
         $.get(`/getRecordByDate/${date}`,
                 function(data){
                         $("table tbody tr").remove();
@@ -34,6 +33,7 @@ $("#dateRecord").change(function () {
                                         </tr>
                                         `  ;
                                 $("table tbody").append(tr);
+                                
                                 
                         });
                         
