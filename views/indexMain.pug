@@ -1,0 +1,59 @@
+extends layoutMain.pug
+
+block title
+    title Veterinary Clinic | Main page
+
+block titleHeader
+    <ul id="navbar">    
+      <li>Veterinary Clinic</li>
+      <li><a href="#">Записи</a>
+        <ul>
+          <li><a href="/edit/">Добавить запись</a></li>
+        </ul>
+      </li>
+    </ul>
+
+block content
+    <div class="block1">     
+        <h3>Выбор по дате</h3>     
+        - var dateToday = new Date().toISOString().split('T')[0]                    
+        input.form-control(name = "Date", type = "date", value = dateToday, id="dateRecord" )
+    </div>
+    div
+        table.table.table-hover.table-theme-dark.mt-5
+            thead
+                tr
+                    th №
+                    th Дата
+                    th Время
+                    th ФИО хозяина
+                    th Сот.телефон
+                    th Имя животного
+                    th Тип животного
+                    th Услуга
+                    th Цена
+                    th Функции
+            tbody
+                each item in records
+                    tr
+                        td
+                        td #{item.records.Date}
+                        td #{item.records.Time}
+                           
+                        td #{item.records.NameOwner}
+                           
+                        td #{item.records.NumberOwner}
+                            
+                        td #{item.records.NameAnimal}
+
+                        td #{item.records.TypeAnimal}
+                        
+                        td #{item.records.ServiceName}
+
+                        td #{item.records.Price}
+
+                        td 
+                            div
+                                a.btn.btn-secondary.btn-lg(href="/edit/"+item.records.IDRecord) &#9998;
+                                a.btn.btn-secondary.btn-lg(href="/delete/"+item.records.IDRecord) &#128465;
+                                
