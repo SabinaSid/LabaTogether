@@ -44,3 +44,14 @@ exports.MainViewModel = class {
         this.editItem=editItem || null;
     }
 }
+class Logger{
+    //static count=1;
+    constructor(whatDo,whenDo){
+        let date=new Date().toISOString();
+        this.WhatDo=whatDo || '';
+        this.whenDo=whenDo || date;
+        ///this.id=Logger.count++;
+    }
+
+}
+exports.Logger=Logger;
