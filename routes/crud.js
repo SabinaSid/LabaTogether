@@ -105,7 +105,7 @@ exports.getRecordByDate= (r, q) => {
                 whatDo:`Получение записи по дате ${r.params.date}:${x.IDRecord},${x.Date},${x.Time},${x.NameOwner},${x.NumberOwner},${x.NameAnimal},${x.TypeAnimal},${x.ServiceName},${x.Price}руб.`,
                 whenDo:new Date().toISOString()
             };
-            console.log('log get date',log);
+            console.log(log);
             db.addLogger(log);
             
         });
